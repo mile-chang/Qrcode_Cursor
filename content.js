@@ -46,9 +46,63 @@ window.addEventListener('load', function() {
       return window.location.origin + '/favicon.ico';
     }
   
+    // 創建樣式
+    const style = document.createElement('style');
+    style.textContent = `
+      .qr-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 9999;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      .qr-container.collapsed {
+        width: 48px;
+        height: 48px;
+        padding: 8px;
+        border-radius: 50%;
+      }
+      .qr-container.collapsed .qr-code,
+      .qr-container.collapsed .site-name,
+      .qr-container.collapsed .page-title {
+        display: none;
+      }
+      .qr-toggle {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .qr-toggle img {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+      }
+      .qr-container:not(.collapsed) .qr-toggle {
+        display: none;
+      }
+    `;
+    document.head.appendChild(style);
+  
     // 創建容器
     const container = document.createElement('div');
-    container.className = 'qr-container';
+    container.className = 'qr-container collapsed';
+    
+    // 創建切換按鈕
+    const toggle = document.createElement('div');
+    toggle.className = 'qr-toggle';
+    const toggleImg = document.createElement('img');
+    toggleImg.src = getFaviconUrl();
+    toggle.appendChild(toggleImg);
     
     // 創建 QR Code 元素
     const qrDiv = document.createElement('div');
@@ -66,76 +120,84 @@ window.addEventListener('load', function() {
     pageTitle.textContent = document.title.substring(0, 15);
     
     // 將元素添加到容器中
+    container.appendChild(toggle);
     container.appendChild(qrDiv);
     container.appendChild(siteName);
     container.appendChild(pageTitle);
     document.body.appendChild(container);
   
-    // 生成 QR Code
-    const qr = new QRCode(qrDiv, {
-      text: window.location.href,
-      width: 256,
-      height: 256,
-      colorDark: "#000000",
-      colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.H
+    // 添加點擊事件
+    container.addEventListener('click', function() {
+      if (container.classList.contains('collapsed')) {
+        container.classList.remove('collapsed');
+        // 首次展開時生成 QR Code
+        if (!qrDiv.hasChildNodes()) {
+          generateQRCode();
+        }
+      } else {
+        container.classList.add('collapsed');
+      }
     });
   
-    // 在 QR Code 生成後添加 logo
-    setTimeout(() => {
-      const qrImage = qrDiv.querySelector('img');
-      if (qrImage) {
-        // 創建一個臨時的 canvas
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = 256;
-        canvas.height = 256;
+    // 生成 QR Code 的函數
+    function generateQRCode() {
+      // 生成 QR Code
+      const qr = new QRCode(qrDiv, {
+        text: window.location.href,
+        width: 256,
+        height: 256,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
   
-        // 加載 favicon
-        const logoImg = new Image();
-        logoImg.crossOrigin = 'Anonymous';
-        
-        // 獲取 favicon URL
-        const faviconUrl = getFaviconUrl();
-        console.log('Loading favicon from:', faviconUrl);
-        logoImg.src = faviconUrl;
+      // 在 QR Code 生成後添加 logo
+      setTimeout(() => {
+        const qrImage = qrDiv.querySelector('img');
+        if (qrImage) {
+          // 創建一個臨時的 canvas
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          canvas.width = 256;
+          canvas.height = 256;
   
-        logoImg.onload = function() {
-          // 先繪製 QR Code
-          ctx.drawImage(qrImage, 0, 0, 256, 256);
+          // 加載 favicon
+          const logoImg = new Image();
+          logoImg.crossOrigin = 'Anonymous';
+          logoImg.src = getFaviconUrl();
   
-          // 計算 logo 的位置和大小
-          const logoSize = 48;  // logo 大小
-          const logoX = (256 - logoSize) / 2;  // 居中位置
-          const logoY = (256 - logoSize) / 2;
+          logoImg.onload = function() {
+            // 先繪製 QR Code
+            ctx.drawImage(qrImage, 0, 0, 256, 256);
   
-          // 繪製白色背景
-          ctx.fillStyle = '#ffffff';
-          ctx.fillRect(logoX - 2, logoY - 2, logoSize + 4, logoSize + 4);
+            // 計算 logo 的位置和大小
+            const logoSize = 48;  // logo 大小
+            const logoX = (256 - logoSize) / 2;  // 居中位置
+            const logoY = (256 - logoSize) / 2;
   
-          // 設置圖像平滑
-          ctx.imageSmoothingEnabled = true;
-          ctx.imageSmoothingQuality = 'high';
+            // 繪製白色背景
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(logoX - 2, logoY - 2, logoSize + 4, logoSize + 4);
   
-          // 繪製 logo
-          ctx.drawImage(logoImg, logoX, logoY, logoSize, logoSize);
+            // 設置圖像平滑
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
   
-          try {
-            // 替換原來的 QR Code 圖片
-            qrImage.src = canvas.toDataURL();
-          } catch (e) {
-            console.error('Error converting canvas to image:', e);
-          }
-        };
+            // 繪製 logo
+            ctx.drawImage(logoImg, logoX, logoY, logoSize, logoSize);
   
-        logoImg.onerror = function() {
-          console.error('Error loading favicon:', faviconUrl);
-          // 如果加載失敗，嘗試使用備用的 favicon URL
-          if (!logoImg.src.includes('favicon.ico')) {
-            console.log('Trying fallback favicon...');
-            logoImg.src = window.location.origin + '/favicon.ico';
-          }
-        };
-      }
-    }, 100);
+            try {
+              // 替換原來的 QR Code 圖片
+              qrImage.src = canvas.toDataURL();
+            } catch (e) {
+              console.error('Error converting canvas to image:', e);
+            }
+          };
+  
+          logoImg.onerror = function() {
+            console.error('Error loading favicon:', faviconUrl);
+          };
+        }
+      }, 100);
+    }
   }); 
