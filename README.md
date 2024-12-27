@@ -62,6 +62,8 @@
 ## 更新記錄
 
 ### 最新版本
+- 修復某些網站上 QR Code 圖標重疊的問題
+- 優化圖標展開/收合的過渡效果
 - 新增折疊/展開功能
 - 優化初始載入效能，僅在展開時才生成 QR Code
 - 改進圖標顯示效果
@@ -127,6 +129,8 @@ This project was entirely developed using the [Cursor](https://cursor.sh/) edito
 ## Update Log
 
 ### Latest Version
+- Fixed icon overlapping issues on certain websites
+- Enhanced icon expand/collapse transition effects
 - Added collapse/expand functionality
 - Optimized initial loading performance
 - Improved icon display
@@ -192,6 +196,8 @@ This project was entirely developed using the [Cursor](https://cursor.sh/) edito
 ## 更新履歴
 
 ### 最新バージョン
+- 特定のウェブサイトでのアイコン重複問題を修正
+- アイコンの展開/折りたたみ効果を改善
 - 折りたたみ/展開機能を追加
 - 初期読み込みパフォーマンスを最適化
 - アイコン表示を改善

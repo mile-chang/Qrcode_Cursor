@@ -60,35 +60,43 @@ window.addEventListener('load', function() {
         z-index: 9999;
         transition: all 0.3s ease;
         cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
       .qr-container.collapsed {
         width: 48px;
         height: 48px;
         padding: 8px;
         border-radius: 50%;
+        overflow: hidden;  /* 防止內容溢出 */
       }
       .qr-container.collapsed .qr-code,
       .qr-container.collapsed .site-name,
       .qr-container.collapsed .page-title {
         display: none;
+        opacity: 0;  /* 確保完全隱藏 */
+        visibility: hidden;  /* 進一步確保隱藏 */
       }
       .qr-toggle {
         width: 48px;
         height: 48px;
         border-radius: 50%;
-        background: white;
         display: flex;
         align-items: center;
         justify-content: center;
-        cursor: pointer;
+        position: relative;  /* 確保定位正確 */
       }
       .qr-toggle img {
         width: 32px;
         height: 32px;
         object-fit: contain;
+        position: relative;  /* 確保定位正確 */
       }
       .qr-container:not(.collapsed) .qr-toggle {
         display: none;
+        opacity: 0;
+        visibility: hidden;
       }
     `;
     document.head.appendChild(style);
@@ -128,6 +136,9 @@ window.addEventListener('load', function() {
   
     // 添加點擊事件
     container.addEventListener('click', function() {
+      // 防止事件冒泡
+      event.stopPropagation();
+      
       if (container.classList.contains('collapsed')) {
         container.classList.remove('collapsed');
         // 首次展開時生成 QR Code
