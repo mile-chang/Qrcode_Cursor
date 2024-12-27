@@ -15,7 +15,11 @@ window.addEventListener('load', function() {
         'github.com': 'https://github.githubassets.com/favicons/favicon.svg',
         'www.github.com': 'https://github.githubassets.com/favicons/favicon.svg',
         'youtube.com': 'https://www.youtube.com/s/desktop/12d6b690/img/favicon_144x144.png',
-        'www.youtube.com': 'https://www.youtube.com/s/desktop/12d6b690/img/favicon_144x144.png'
+        'www.youtube.com': 'https://www.youtube.com/s/desktop/12d6b690/img/favicon_144x144.png',
+        'twitter.com': 'https://abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png',
+        'www.twitter.com': 'https://abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png',
+        'x.com': 'https://abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png',
+        'www.x.com': 'https://abs.twimg.com/responsive-web/client-web/icon-default.522d363a.png'
       };
   
       // 如果是特定網站，直接返回對應的 favicon URL
