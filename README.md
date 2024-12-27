@@ -1,4 +1,14 @@
-# QR Code 網頁分享插件
+# QR Code Chrome Extension
+
+<div align="center">
+  <a href="#chinese">中文</a> | <a href="#english">English</a> | <a href="#japanese">日本語</a>
+</div>
+
+---
+
+<div id="chinese">
+
+# QR Code 網頁分享插件 🔍
 
 這是一個簡單但功能強大的 Chrome 擴展，可以為任何網頁生成包含網站 logo 的 QR Code。
 本專案完全使用 [Cursor](https://cursor.sh/) 編輯器開發，展示了 AI 輔助開發的強大功能。
@@ -56,3 +66,135 @@
 - 優化初始載入效能，僅在展開時才生成 QR Code
 - 改進圖標顯示效果
 - 優化使用者體驗
+
+</div>
+
+---
+
+<div id="english">
+
+# QR Code Web Share Extension 🔍
+
+A simple yet powerful Chrome extension that generates QR codes with website logos for any webpage.
+This project was entirely developed using the [Cursor](https://cursor.sh/) editor, showcasing the power of AI-assisted development.
+
+## Features
+
+- Displays a clean website icon in the bottom right corner
+- Click to expand and show the full QR code
+- Automatically embeds the website's logo in the center of the QR code
+- Shows website name and page title below the QR code
+- Supports all websites with special optimization for major platforms (e.g., GitHub, YouTube)
+
+## How to Use
+
+1. After installation, you'll see a small icon (website favicon) in the bottom right corner of every webpage
+2. Click the icon to expand and show:
+   - QR code with website logo (256x256 pixels)
+   - Website domain name
+   - Page title (limited to 15 characters)
+3. Click again to collapse back to icon view
+
+## Technical Features
+
+- Developed using Cursor editor with AI assistance
+- Automatic detection and use of highest quality website icons
+- Special handling for major website icons
+- Smooth logo embedding using Canvas technology
+- Responsive design with smooth expand/collapse animations
+- High error correction level QR code generation
+
+## Development Tools
+
+- [Cursor](https://cursor.sh/) - AI-powered code editor
+- Rapid development and code optimization through Cursor's AI features
+- AI-assisted problem solving during development
+
+## Installation
+
+1. Download all project files
+2. Open Chrome browser and navigate to extensions page (chrome://extensions/)
+3. Enable "Developer mode" in the top right
+4. Click "Load unpacked"
+5. Select the project folder
+
+## Notes
+
+- Some websites may not display logos correctly due to CORS restrictions
+- Website domain name will be used as identifier if favicon is not set
+- QR code logo size is fixed at 48x48 pixels
+
+## Update Log
+
+### Latest Version
+- Added collapse/expand functionality
+- Optimized initial loading performance
+- Improved icon display
+- Enhanced user experience
+
+</div>
+
+---
+
+<div id="japanese">
+
+# QR コード Web 共有拡張機能 🔍
+
+任意のウェブページに対してウェブサイトのロゴ入り QR コードを生成する、シンプルながらパワフルな Chrome 拡張機能です。
+このプロジェクトは [Cursor](https://cursor.sh/) エディタを使用して完全に開発され、AI 支援開発の強力な機能を示しています。
+
+## 主な機能
+
+- ウェブページの右下にシンプルなウェブサイトアイコンを表示
+- アイコンをクリックすると完全な QR コードを表示
+- QR コードの中央にウェブサイトのロゴを自動的に埋め込み
+- QR コードの下にウェブサイト名とページタイトルを表示
+- すべてのウェブサイトをサポート（GitHub、YouTube などの主要プラットフォームに特別対応）
+
+## 使用方法
+
+1. インストール後、各ウェブページの右下に小さなアイコン（ウェブサイトのファビコン）が表示されます
+2. アイコンをクリックすると表示される内容：
+   - ウェブサイトのロゴ入り QR コード（256x256 ピクセル）
+   - ウェブサイトのドメイン名
+   - ページタイトル（15文字まで）
+3. 再度クリックするとアイコン表示に戻ります
+
+## 技術的特徴
+
+- Cursor エディタを使用した AI 支援開発
+- 最高品質のウェブサイトアイコンの自動検出と使用
+- 主要ウェブサイトのアイコン取得に特別対応
+- Canvas 技術によるロゴのスムーズな埋め込み
+- レスポンシブデザインと滑らかな展開/収縮アニメーション
+- 高誤り訂正レベルの QR コード生成
+
+## 開発ツール
+
+- [Cursor](https://cursor.sh/) - AI 駆動のコードエディタ
+- Cursor の AI 機能による迅速な開発とコード最適化
+- 開発中の技術的課題に AI 支援による解決
+
+## インストール方法
+
+1. プロジェクトのすべてのファイルをダウンロード
+2. Chrome ブラウザで拡張機能ページ（chrome://extensions/）を開く
+3. 右上の「デベロッパーモード」を有効にする
+4. 「パッケージ化されていない拡張機能を読み込む」をクリック
+5. プロジェクトフォルダを選択
+
+## 注意事項
+
+- CORS 制限により一部のウェブサイトでロゴが正しく表示されない場合があります
+- ファビコンが設定されていない場合、ウェブサイトのドメイン名が識別子として使用されます
+- QR コード内のロゴサイズは 48x48 ピクセルに固定されています
+
+## 更新履歴
+
+### 最新バージョン
+- 折りたたみ/展開機能を追加
+- 初期読み込みパフォーマンスを最適化
+- アイコン表示を改善
+- ユーザーエクスペリエンスを向上
+
+</div>
