@@ -62,6 +62,7 @@
 ## 更新記錄
 
 ### 最新版本
+- 修復同一網域不同頁面 QR Code 不更新的問題
 - 修復某些網站上 QR Code 圖標重疊的問題
 - 優化圖標展開/收合的過渡效果
 - 新增折疊/展開功能
@@ -129,6 +130,7 @@ This project was entirely developed using the [Cursor](https://cursor.sh/) edito
 ## Update Log
 
 ### Latest Version
+- Fixed QR code not updating issue when navigating between pages on the same domain
 - Fixed icon overlapping issues on certain websites
 - Enhanced icon expand/collapse transition effects
 - Added collapse/expand functionality
@@ -196,6 +198,7 @@ This project was entirely developed using the [Cursor](https://cursor.sh/) edito
 ## 更新履歴
 
 ### 最新バージョン
+- 同一ドメイン内での画面遷移時に QR コードが更新されない問題を修正
 - 特定のウェブサイトでのアイコン重複問題を修正
 - アイコンの展開/折りたたみ効果を改善
 - 折りたたみ/展開機能を追加
