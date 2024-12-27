@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "網頁 QR Code 分享",
+  "version": "1.0",
+  "description": "在網頁右下角顯示當前頁面的 QR Code",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["qrcode.min.js", "content.js"],
+      "css": ["styles.css"]
+    }
+  ]
+} 
