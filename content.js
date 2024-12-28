@@ -98,10 +98,9 @@ function initQRCode() {
       }
       .qr-container.collapsed .qr-code,
       .qr-container.collapsed .site-name,
-      .qr-container.collapsed .page-title {
+      .qr-container.collapsed .page-title,
+      .qr-container.collapsed .download-button {
         display: none;
-        opacity: 0;
-        visibility: hidden;
       }
       .qr-toggle {
         width: 48px;
@@ -110,30 +109,56 @@ function initQRCode() {
         display: flex;
         align-items: center;
         justify-content: center;
-        position: relative;
-        background: white;
       }
       .qr-toggle img {
         width: 32px;
         height: 32px;
         object-fit: contain;
-        position: relative;
+        border-radius: 50%;
       }
       .qr-container:not(.collapsed) .qr-toggle {
         display: none;
-        opacity: 0;
-        visibility: hidden;
+      }
+      .site-name {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #666;
+      }
+      .page-title {
+        margin-top: 4px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
       }
       .site-name, .page-title {
-        margin-top: 8px;
         text-align: center;
         max-width: 256px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      .page-title {
-        font-weight: bold;
+      .download-button {
+        margin-top: 8px;
+        padding: 6px 12px;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        color: #333;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .download-button:hover {
+        background-color: #e9ecef;
+        border-color: #ced4da;
+      }
+      .download-button svg {
+        width: 16px;
+        height: 16px;
+        margin-right: 6px;
       }
     `;
     document.head.appendChild(style);
@@ -164,21 +189,44 @@ function initQRCode() {
   const pageTitle = document.createElement('div');
   pageTitle.className = 'page-title';
   pageTitle.textContent = document.title.substring(0, 15);
-  
+
+  // 創建下載按鈕
+  const downloadButton = document.createElement('button');
+  downloadButton.className = 'download-button';
+  downloadButton.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/>
+      <line x1="12" y1="15" x2="12" y2="3"/>
+    </svg>
+    下載 QR Code
+  `;
+
+  // 添加下載按鈕點擊事件
+  downloadButton.addEventListener('click', function(event) {
+    event.stopPropagation();
+    const qrImage = qrDiv.querySelector('img');
+    if (qrImage) {
+      const link = document.createElement('a');
+      link.href = qrImage.src;
+      link.download = `qrcode_${new URL(window.location.href).hostname}_${Date.now()}.png`;
+      link.click();
+    }
+  });
+
   // 將元素添加到容器中
   container.appendChild(toggle);
   container.appendChild(qrDiv);
   container.appendChild(siteName);
   container.appendChild(pageTitle);
+  container.appendChild(downloadButton);
   document.body.appendChild(container);
 
   // 添加點擊事件
   container.addEventListener('click', function(event) {
-    event.stopPropagation();
-    
+    if (event.target === downloadButton) return;
     if (container.classList.contains('collapsed')) {
       container.classList.remove('collapsed');
-      // 首次展開時生成 QR Code
       if (!qrDiv.hasChildNodes()) {
         generateQRCode();
       }

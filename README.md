@@ -20,6 +20,7 @@
 - QR Code 中央自動嵌入當前網站的 logo
 - 在 QR Code 下方顯示網站名稱和頁面標題
 - 支持所有網站，對主流網站（如 GitHub、YouTube 等）有特殊優化
+- 提供便捷的 QR Code 下載按鈕
 
 ## 使用方法
 
@@ -27,8 +28,10 @@
 2. 點擊小圖標會展開顯示：
    - 帶有網站 logo 的 QR Code（尺寸：256x256像素）
    - 網站域名
-   - 頁面標題（最多顯示15個字符）
-3. 再次點擊可收起回到小圖標狀態
+   - 頁面標題
+   - 下載按鈕
+3. 點擊下載按鈕可將當前 QR Code 保存為圖片
+4. 再次點擊可收起回到小圖標狀態
 
 ## 技術特點
 
@@ -62,11 +65,8 @@
 ## 更新記錄
 
 ### 最新版本
-- 修復同一網域不同頁面 QR Code 不更新的問題
-- 修復某些網站上 QR Code 圖標重疊的問題
-- 優化圖標展開/收合的過渡效果
-- 新增折疊/展開功能
-- 優化初始載入效能，僅在展開時才生成 QR Code
+- 新增 QR Code 下載按鈕功能
+- 優化 QR Code 生成效果
 - 改進圖標顯示效果
 - 優化使用者體驗
 
@@ -87,7 +87,8 @@ This project was entirely developed using the [Cursor](https://cursor.sh/) edito
 - Click to expand and show the full QR code
 - Automatically embeds the website's logo in the center of the QR code
 - Shows website name and page title below the QR code
-- Supports all websites with special optimization for major platforms (e.g., GitHub, YouTube)
+- Supports all websites with special optimization for major platforms
+- Provides a convenient QR code download button
 
 ## How to Use
 
@@ -95,8 +96,10 @@ This project was entirely developed using the [Cursor](https://cursor.sh/) edito
 2. Click the icon to expand and show:
    - QR code with website logo (256x256 pixels)
    - Website domain name
-   - Page title (limited to 15 characters)
-3. Click again to collapse back to icon view
+   - Page title
+   - Download button
+3. Click the download button to save the current QR code as an image
+4. Click again to collapse back to icon view
 
 ## Technical Features
 
@@ -130,11 +133,8 @@ This project was entirely developed using the [Cursor](https://cursor.sh/) edito
 ## Update Log
 
 ### Latest Version
-- Fixed QR code not updating issue when navigating between pages on the same domain
-- Fixed icon overlapping issues on certain websites
-- Enhanced icon expand/collapse transition effects
-- Added collapse/expand functionality
-- Optimized initial loading performance
+- Added QR code download button feature
+- Enhanced QR code generation
 - Improved icon display
 - Enhanced user experience
 
@@ -155,7 +155,8 @@ This project was entirely developed using the [Cursor](https://cursor.sh/) edito
 - アイコンをクリックすると完全な QR コードを表示
 - QR コードの中央にウェブサイトのロゴを自動的に埋め込み
 - QR コードの下にウェブサイト名とページタイトルを表示
-- すべてのウェブサイトをサポート（GitHub、YouTube などの主要プラットフォームに特別対応）
+- すべてのウェブサイトをサポート（主要プラットフォームに特別対応）
+- 便利な QR コードダウンロードボタンを提供
 
 ## 使用方法
 
@@ -163,8 +164,10 @@ This project was entirely developed using the [Cursor](https://cursor.sh/) edito
 2. アイコンをクリックすると表示される内容：
    - ウェブサイトのロゴ入り QR コード（256x256 ピクセル）
    - ウェブサイトのドメイン名
-   - ページタイトル（15文字まで）
-3. 再度クリックするとアイコン表示に戻ります
+   - ページタイトル
+   - ダウンロードボタン
+3. ダウンロードボタンをクリックして現在の QR コードを画像として保存
+4. 再度クリックするとアイコン表示に戻ります
 
 ## 技術的特徴
 
@@ -198,11 +201,8 @@ This project was entirely developed using the [Cursor](https://cursor.sh/) edito
 ## 更新履歴
 
 ### 最新バージョン
-- 同一ドメイン内での画面遷移時に QR コードが更新されない問題を修正
-- 特定のウェブサイトでのアイコン重複問題を修正
-- アイコンの展開/折りたたみ効果を改善
-- 折りたたみ/展開機能を追加
-- 初期読み込みパフォーマンスを最適化
+- QR コードダウンロードボタン機能を追加
+- QR コード生成効果を向上
 - アイコン表示を改善
 - ユーザーエクスペリエンスを向上
 
